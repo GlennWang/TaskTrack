@@ -18,13 +18,13 @@ class DailyTaskApi(MethodView):
             ]
             return {
                 'status': 'success',
-                'message': '数据查询成功',
+                'message': '資料查詢成功',
                 'results': results
             }
         task = DailyTask.query.get(task_id)
         return {
             'status': 'success',
-            'message': '数据查询成功',
+            'message': '資料查詢成功',
             'results': {
                 'id': task.id,
                 'name': task.name,
@@ -44,7 +44,7 @@ class DailyTaskApi(MethodView):
         db.session.commit()
         return {
             'status': 'success',
-            'message': '数据添加成功',
+            'message': '資料添加成功',
         }
 
     def delete(self, task_id):
@@ -53,7 +53,7 @@ class DailyTaskApi(MethodView):
         db.session.commit()
         return {
             'status': 'success',
-            'message': '数据删除成功',
+            'message': '資料刪除成功',
         }
 
     def put(self, task_id):
@@ -64,7 +64,7 @@ class DailyTaskApi(MethodView):
         db.session.commit()
         return {
             'status': 'success',
-            'message': '数据修改成功',
+            'message': '資料修改成功',
         }
 
 daily_task_view = DailyTaskApi.as_view('daily_task_api')

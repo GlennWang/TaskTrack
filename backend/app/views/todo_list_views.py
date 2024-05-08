@@ -18,13 +18,13 @@ class ToDoListApi(MethodView):
             ]
             return {
                 'status': 'success',
-                'message': '数据查询成功',
+                'message': '資料查詢成功',
                 'results': results
             }
         item = ToDoList.query.get(item_id)
         return {
             'status': 'success',
-            'message': '数据查询成功',
+            'message': '資料查詢成功',
             'results': {
                 'id': item.id,
                 'name': item.name,
@@ -44,7 +44,7 @@ class ToDoListApi(MethodView):
         db.session.commit()
         return {
             'status': 'success',
-            'message': '数据添加成功',
+            'message': '資料添加成功',
         }
 
     def delete(self, item_id):
@@ -53,7 +53,7 @@ class ToDoListApi(MethodView):
         db.session.commit()
         return {
             'status': 'success',
-            'message': '数据删除成功',
+            'message': '資料刪除成功',
         }
 
     def put(self, item_id):
@@ -64,7 +64,7 @@ class ToDoListApi(MethodView):
         db.session.commit()
         return {
             'status': 'success',
-            'message': '数据修改成功',
+            'message': '資料修改成功',
         }
 
 todo_list_view = ToDoListApi.as_view('todo_list_api')
