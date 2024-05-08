@@ -1,0 +1,42 @@
+POST http://127.0.0.1:5000/tasks
+Content-Type: application/json
+
+{
+    "name": "運動十分鐘",
+    "priority": 3,
+    "importance": 3
+}
+
+###
+
+GET http://127.0.0.1:5000/tasks
+
+
+###
+PUT http://127.0.0.1:5000/books/3
+Content-Type: application/json
+
+{
+    "author": "大眼珠子",
+    "book_name": "黎明之剑",
+    "book_number": "003",
+    "book_prize": 3.4,
+    "book_publisher": "起点出版社",
+    "book_type": "奇幻"
+  }
+
+###
+
+DELETE http://127.0.0.1:5000/books/3
+Content-Type: application/json
+
+{
+    "author": "大眼珠子",
+    "book_name": "黎明之剑",
+    "book_number": "003",
+    "book_prize": 3.4,
+    "book_publisher": "起点出版社",
+    "book_type": "奇幻"
+  }
+
+###
