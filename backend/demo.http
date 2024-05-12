@@ -1,10 +1,14 @@
+### task_inventory
 POST http://127.0.0.1:5000/tasks
 Content-Type: application/json
 
 {
-    "name": "運動十分鐘",
-    "priority": 3,
-    "importance": 3
+    "category": "Category E",
+    "deadline": "2024-05-15",
+    "description": "Description 5",
+    "importance": 2,
+    "name": "Task 5",
+    "priority": 1
 }
 
 ###
@@ -13,16 +17,84 @@ GET http://127.0.0.1:5000/tasks
 
 
 ###
-PUT http://127.0.0.1:5000/tasks/3
+PUT http://127.0.0.1:5000/tasks/5
+Content-Type: application/json
+
+{
+    "category": "Category E",
+    "deadline": "2024-05-18",
+    "description": "Description 5",
+    "importance": 2,
+    "name": "Task 5",
+    "priority": 1
+}
+
+###
+
+DELETE http://127.0.0.1:5000/tasks/4
 Content-Type: application/json
 
 {
 
 }
 
+### daily_task
+
+POST http://127.0.0.1:5000/daily_tasks
+Content-Type: application/json
+
+{
+    "name": "Daily Task 4"
+}
+
 ###
 
-DELETE http://127.0.0.1:5000/tasks/3
+GET http://127.0.0.1:5000/daily_tasks
+
+
+###
+PUT http://127.0.0.1:5000/daily_tasks/4
+Content-Type: application/json
+
+{
+    "name": "Daily Task 444"
+}
+
+###
+
+DELETE http://127.0.0.1:5000/daily_tasks/4
+Content-Type: application/json
+
+{
+
+}
+
+### todo_list
+
+POST http://127.0.0.1:5000/todo_lists
+Content-Type: application/json
+
+{
+    "name": "To Do 3",
+    "status": false
+}
+
+###
+
+GET http://127.0.0.1:5000/todo_lists
+
+
+###
+PUT http://127.0.0.1:5000/todo_lists/3
+Content-Type: application/json
+
+{
+    "status": true
+}
+
+###
+
+DELETE http://127.0.0.1:5000/todo_lists/3
 Content-Type: application/json
 
 {

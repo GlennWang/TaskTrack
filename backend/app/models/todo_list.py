@@ -5,24 +5,22 @@ class ToDoList(db.Model):
     __tablename__ = 'todo_list'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), nullable=False)
-    priority = db.Column(db.Integer, default=1)
-    importance = db.Column(db.Integer, default=1)
+    status = db.Column(db.Boolean, nullable=False, default=False)
 
     @staticmethod
     def init_db():
-        items = [
-            ('To Do 1', 1, 1),
-            ('To Do 2', 2, 2)
+        tasks = [
+            ('To Do 1', False),
+            ('To Do 2', False)
         ]
-        for item in items:
+        for task in tasks:
             to_do = ToDoList(
-                name=item[0],
-                priority=item[1],
-                importance=item[2]
+                name=task[0],
+                status=task[1]
             )
             db.session.add(to_do)
             try:
                 db.session.commit()
             except IntegrityError:
                 db.session.rollback()
-                print(f"Duplicate to-do item found: {item[0]}")
+                print(f"Duplicate to-do task found: {task[0]}")

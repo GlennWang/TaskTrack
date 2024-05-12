@@ -12,8 +12,6 @@ class DailyTaskApi(MethodView):
                 {
                     'id': task.id,
                     'name': task.name,
-                    'priority': task.priority,
-                    'importance': task.importance
                 } for task in tasks
             ]
             return {
@@ -28,17 +26,13 @@ class DailyTaskApi(MethodView):
             'results': {
                 'id': task.id,
                 'name': task.name,
-                'priority': task.priority,
-                'importance': task.importance
             }
         }
 
     def post(self):
         form = request.json
         task = DailyTask(
-            name=form.get('name'),
-            priority=form.get('priority', 1),
-            importance=form.get('importance', 1)
+            name=form.get('name')
         )
         db.session.add(task)
         db.session.commit()
@@ -59,8 +53,6 @@ class DailyTaskApi(MethodView):
     def put(self, task_id):
         task = DailyTask.query.get(task_id)
         task.name = request.json.get('name')
-        task.priority = request.json.get('priority', task.priority)
-        task.importance = request.json.get('importance', task.importance)
         db.session.commit()
         return {
             'status': 'success',

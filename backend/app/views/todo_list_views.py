@@ -5,62 +5,64 @@ from extensions import db
 from models import ToDoList
 
 class ToDoListApi(MethodView):
-    def get(self, item_id):
-        if not item_id:
-            items = ToDoList.query.all()
+    def get(self, task_id):
+        if not task_id:
+            tasks = ToDoList.query.all()
             results = [
                 {
-                    'id': item.id,
-                    'name': item.name,
-                    'priority': item.priority,
-                    'importance': item.importance
-                } for item in items
+                    'id': task.id,
+                    'name': task.name,
+                    'status': task.status
+                } for task in tasks
             ]
             return {
                 'status': 'success',
                 'message': '資料查詢成功',
                 'results': results
             }
-        item = ToDoList.query.get(item_id)
+        task = ToDoList.query.get(task_id)
         return {
             'status': 'success',
             'message': '資料查詢成功',
             'results': {
-                'id': item.id,
-                'name': item.name,
-                'priority': item.priority,
-                'importance': item.importance
+                'id': task.id,
+                'name': task.name,
+                'status': task.status
             }
         }
 
     def post(self):
         form = request.json
-        item = ToDoList(
-            name=form.get('name'),
-            priority=form.get('priority', 1),
-            importance=form.get('importance', 1)
+        task = ToDoList(
+            name=form.get('name')
         )
-        db.session.add(item)
+        db.session.add(task)
         db.session.commit()
         return {
             'status': 'success',
             'message': '資料添加成功',
         }
 
-    def delete(self, item_id):
-        item = ToDoList.query.get(item_id)
-        db.session.delete(item)
+    def delete(self, task_id):
+        task = ToDoList.query.get(task_id)
+        db.session.delete(task)
         db.session.commit()
         return {
             'status': 'success',
             'message': '資料刪除成功',
         }
 
-    def put(self, item_id):
-        item = ToDoList.query.get(item_id)
-        item.name = request.json.get('name')
-        item.priority = request.json.get('priority', item.priority)
-        item.importance = request.json.get('importance', item.importance)
+    def put(self, task_id):
+        task = ToDoList.query.get(task_id)
+        form = request.json
+        name = form.get('name')
+        status = form.get('status')
+
+        if name is not None:
+            task.name = name
+        elif status is not None:
+            task.status = status
+
         db.session.commit()
         return {
             'status': 'success',
