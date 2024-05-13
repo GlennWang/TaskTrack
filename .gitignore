@@ -4,3 +4,6 @@ backend/myenv/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# Ignore tasktrack.db
+backend/app/database/tasktrack.db
