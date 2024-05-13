@@ -1,11 +1,16 @@
 <template>
   <div>
+    <!-- 左侧固定的 TaskInventory 组件容器 -->
+    <div class="task-inventory-container">
+      <!-- TaskInventory 组件 -->
+      <TaskInventory @tasks-selected="handlePushSelectedTasks"/>
+    </div>
     
-    <!-- <DailyTask @tasks-selected="handlePushSelectedTasks" /> -->
 
-    <!-- <ToDoList :selected-tasks="selectedTasksFromDailyTask" /> -->
-
-    <TaskInventory />
+    <div class="DailyTask-and-ToDoList-container">
+      <DailyTask @tasks-selected="handlePushSelectedTasks" />
+      <ToDoList :selected-tasks="selectedTasksFromDailyTask" />
+    </div>
   </div>
 </template>
 
@@ -32,6 +37,17 @@ export default {
   }
 };
 </script>
-<style scoped>
 
+<style scoped>
+.task-inventory-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.DailyTask-and-ToDoList-container {
+  position: fixed;
+  top: 0;
+  right: 400px;
+}
 </style>

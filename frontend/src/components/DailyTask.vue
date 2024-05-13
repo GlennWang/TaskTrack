@@ -28,7 +28,7 @@
     </div>
   </template>
   
-  <script>
+<script>
   import dailyTaskApi from '../apis/dailyTaskApi';
   
   export default {
@@ -122,9 +122,9 @@
       },
     }
   };
-  </script>
+</script>
   
-  <style scoped>
+<style scoped>
   .daily-tasks {
     font-family: Arial, sans-serif;
     width: 100%;
@@ -253,5 +253,5 @@
     border: 2px solid #2ecc71; 
     background-color: #2ecc71;
   }
-  </style>
+</style>
   
