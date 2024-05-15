@@ -1,4 +1,5 @@
 <template>
+  <div class="todo-list-wrapper">
     <div class="todo-list">
       <h2>ToDo List</h2>
       <div class="add-task-container">
@@ -25,7 +26,8 @@
         </li>
       </ul>
     </div>
-  </template>
+  </div>
+</template>
   
 <script>
 import todoListApi from '../apis/todoListApi';
@@ -125,125 +127,112 @@ export default {
   }
 };
 </script>
-  
-  <style scoped>
-  .todo-list {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .todo-list h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .todo-list input[type="text"] {
-    width: calc(100% - 100px);
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-right: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .todo-list button {
-    padding: 10px 20px;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: color 0.3s, border-color 0.3s;
-  }
-  
-  .todo-list button:hover {
-    color: #fff;
-    background-color: #333; 
-  }
-  
-  .todo-list ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .todo-list .task-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .todo-list .task-status {
-    margin-right: 10px;
-  }
-  
-  .todo-list .task-name-container {
-    flex-grow: 1;
-    overflow: hidden;
-    text-align: left;
-  }
-  
-  .todo-list .task-name-container input[type="text"] {
-    width: 100%;
-  }
-  
-  .todo-list .delete-task {
-    cursor: pointer;
-    color: #f44336;
-    background-color: transparent;
-    border: none;
-    transition: color 0.3s;
-  }
-  
-  .todo-list .delete-task svg {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .todo-list .delete-task:hover {
-    color: #d32f2f;
-  }
-  
-  .todo-list .disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-  
-  /* Custom checkbox styles */
-  .custom-checkbox {
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-  border: 2px solid rgb(223, 223, 223);
-  background-color: rgb(223, 223, 223);
+
+<style scoped>
+.todo-list-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 98%;
+  max-height: 98%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.todo-list h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.todo-list .add-task-container {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.todo-list input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.todo-list button {
+  padding: 10px 20px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.todo-list button:hover {
+  color: #fff;
+  background-color: #333;
+}
+
+.todo-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: calc(50vh - 210px);
+  /* max-height: calc(100vh - 240px);  */
+  overflow-y: auto;
+}
+
+.todo-list .task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.todo-list .task-status {
   margin-right: 10px;
-  border-radius: 50%;
+  cursor: pointer;
 }
 
-.custom-checkbox:hover {
-  opacity: 0.6;
+.todo-list .task-name-container {
+  flex-grow: 1;
+  overflow: hidden;
+  text-align: left;
 }
 
-.custom-checkbox::after {
-  content: "";
-  display: block;
-  margin-left: 7px;
-  margin-top: 3px;
-  width: 5px;
-  height: 11px;
-  border-style: solid;
-  border-color: rgb(255, 255, 255);
-  border-image: initial;
-  border-width: 0px 3px 3px 0px;
-  transform: rotate(45deg);
+.todo-list .task-name-container input[type="text"] {
+  width: 100%;
 }
 
-.custom-checkbox-checked {
-  border: 2px solid #2ecc71; 
-  background-color: #2ecc71;
+.todo-list .delete-task {
+  cursor: pointer;
+  color: #f44336;
+  background-color: transparent;
+  border: none;
+  transition: color 0.3s;
 }
-  </style>
-  
+
+.todo-list .delete-task svg {
+  width: 24px;
+  height: 24px;
+}
+
+.todo-list .delete-task:hover {
+  color: #d32f2f;
+}
+
+.todo-list .disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+</style>

@@ -1,4 +1,5 @@
 <template>
+  <div class="daily-tasks-wrapper">
     <div class="daily-tasks">
       <h2>Daily Tasks</h2>
       <div class="add-task-container">
@@ -26,7 +27,8 @@
       </ul>
       <button @click="pushTasks" :disabled="isEditing">Push Selected Tasks</button>
     </div>
-  </template>
+  </div>
+</template>
   
 <script>
   import dailyTaskApi from '../apis/dailyTaskApi';
@@ -125,133 +127,109 @@
 </script>
   
 <style scoped>
-  .daily-tasks {
-    font-family: Arial, sans-serif;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .daily-tasks h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .daily-tasks .add-task-container {
-    margin-bottom: 20px;
-  }
-  
-  .daily-tasks input[type="text"] {
-    width: calc(100% - 100px);
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-right: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .daily-tasks button {
-    padding: 10px 20px;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: color 0.3s, border-color 0.3s;
-  }
-  
-  .daily-tasks button:hover {
-    color: #fff;
-    background-color: #333; 
-  }
-  
-  .daily-tasks ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .daily-tasks .tasks-list {
-    margin: 0;
-  }
-  
-  .daily-tasks .task-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .daily-tasks .task-status {
-    margin-right: 10px;
-  }
-  
-  .daily-tasks .task-name-container {
-    flex-grow: 1;
-    overflow: hidden;
-    text-align: left;
-  }
-  
-  .daily-tasks .task-name-container input[type="text"] {
-    width: 100%;
-  }
-  
-  .daily-tasks .delete-task {
-    cursor: pointer;
-    color: #f44336;
-    background-color: transparent;
-    border: none;
-    transition: color 0.3s;
-  }
-  
-  .daily-tasks .delete-task svg {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .daily-tasks .delete-task:hover {
-    color: #d32f2f;
-  }
-  
-  .daily-tasks .disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-  
-  /* Custom checkbox styles */
-  .custom-checkbox {
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    border: 2px solid rgb(223, 223, 223);
-    background-color: rgb(223, 223, 223);
-    margin-right: 10px;
-    border-radius: 50%;
-  }
-  
-  .custom-checkbox:hover {
-    opacity: 0.6;
-  }
-  
-  .custom-checkbox::after {
-    content: "";
-    display: block;
-    margin-left: 7px;
-    margin-top: 3px;
-    width: 5px;
-    height: 11px;
-    border-style: solid;
-    border-color: rgb(255, 255, 255);
-    border-image: initial;
-    border-width: 0px 3px 3px 0px;
-    transform: rotate(45deg);
-  }
-  
-  .custom-checkbox-checked {
-    border: 2px solid #2ecc71; 
-    background-color: #2ecc71;
-  }
+.daily-tasks-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.daily-tasks {
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 98%;
+  max-height: 98%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.daily-tasks h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.daily-tasks .add-task-container {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.daily-tasks input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.daily-tasks button {
+  padding: 10px 20px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.daily-tasks button:hover {
+  color: #fff;
+  background-color: #333;
+}
+
+.daily-tasks ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: calc(50vh - 245px); 
+  overflow-y: auto;
+}
+
+.daily-tasks .task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.daily-tasks .task-status {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.daily-tasks .task-name-container {
+  flex-grow: 1;
+  overflow: hidden;
+  text-align: left;
+}
+
+.daily-tasks .task-name-container input[type="text"] {
+  width: 100%;
+}
+
+.daily-tasks .delete-task {
+  cursor: pointer;
+  color: #f44336;
+  background-color: transparent;
+  border: none;
+  transition: color 0.3s;
+}
+
+.daily-tasks .delete-task svg {
+  width: 24px;
+  height: 24px;
+}
+
+.daily-tasks .delete-task:hover {
+  color: #d32f2f;
+}
+
+.daily-tasks .disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 </style>
-  
