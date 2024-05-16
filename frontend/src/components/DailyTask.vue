@@ -6,7 +6,7 @@
         <input type="text" v-model="newTask" placeholder="Enter task...">
         <button @click="addTask">+</button>
       </div>
-      <ul class="tasks-list">
+      <ul class="tasks-list" :style="{ maxHeight: maxHeight }">
         <li v-for="task in tasks.results" :key="task.id" :class="{ 'editing': editingId === task.id }" class="task-item">
           <div class="task-status" @click="updateTaskStatus(task)">
             <div class="custom-checkbox" :class="{ 'custom-checkbox-checked': selectedTasks[task.id] }"></div>
@@ -34,6 +34,12 @@
   import dailyTaskApi from '../apis/dailyTaskApi';
   
   export default {
+    props: {
+    maxHeight: {
+      type: String,
+      default: null
+    }
+  },
     data() {
       return {
         tasks: { results: [] },
@@ -144,7 +150,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 98%;
   max-height: 98%;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   box-sizing: border-box;
 }
 
@@ -185,7 +191,8 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  max-height: calc(50vh - 245px); 
+  max-height: calc(50vh - 240px); 
+  /* max-height: calc(100vh - 269px);  */
   overflow-y: auto;
 }
 

@@ -281,7 +281,6 @@ export default {
 .task-inventory-wrapper {
   width: 100%;
   height: 100%;
-  overflow: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,7 +289,7 @@ export default {
 .task-inventory-container {
   width: 50vw;
   /* height: 100vh; */
-  height: calc(100vh - 65px);
+  height: calc(100vh - 60px);
   overflow-y: auto;
 }
 

@@ -12,11 +12,11 @@
         <TaskInventory @tasks-selected="handlePushSelectedTasks"/>
       </div>
       <div class="main-content">
-        <div v-if="mode !== 'core' && mode !== 'focus'" class="DailyTask-container">
+        <div v-if="mode !== 'core'" class="DailyTask-container">
           <DailyTask @tasks-selected="handlePushSelectedTasks" />
         </div>
-        <div class="ToDoList-container" :style="{ maxHeight: maxHeight }">
-          <ToDoList :selected-tasks="selectedTasksFromDailyTask" />
+        <div class="ToDoList-container">
+          <ToDoList :selected-tasks="selectedTasksFromDailyTask" :maxHeight="ToDoListulmaxHeight"/>
         </div>
       </div>
     </div>
@@ -24,10 +24,10 @@
     <!-- 新的布局 -->
     <div v-if="mode === 'daily' || mode === 'focus'" class="new-layout">
       <div v-if="mode === 'daily'" class="DailyTask-full">
-        <DailyTask @tasks-selected="handlePushSelectedTasks" />
+        <DailyTask @tasks-selected="handlePushSelectedTasks" :maxHeight="DailyTaskulmaxHeight"/>
       </div>
-      <div class="ToDoList-full" :style="{ maxHeight: maxHeight }">
-        <ToDoList :selected-tasks="selectedTasksFromDailyTask" />
+      <div class="ToDoList-full">
+        <ToDoList :selected-tasks="selectedTasksFromDailyTask" :maxHeight="ToDoListulmaxHeight"/>
       </div>
     </div>
   </div>
@@ -48,26 +48,35 @@ export default {
   data() {
     return {
       selectedTasksFromDailyTask: [],
-      mode: 'comprehensive', // 初始模式為Comprehensive Planning Mode
-      maxHeight: null // 初始化maxHeight為null
+      mode: 'comprehensive',
+      ToDoListulmaxHeight: null,
+      DailyTaskulmaxHeight: null
     };
   },
   methods: {
     switchToComprehensiveMode() {
       this.mode = 'comprehensive';
-      this.maxHeight = null;
+      this.ToDoListulmaxHeight = null;
+      this.DailyTaskulmaxHeight = null;
     },
     switchToCoreMode() {
       this.mode = 'core';
-      this.maxHeight = '300px'; // 設置ToDo List的maxHeight
+      this.ToDoListulmaxHeight = 'calc(100vh - 228px)';
+      this.DailyTaskulmaxHeight = null;
     },
     switchToDailyMode() {
       this.mode = 'daily';
-      this.maxHeight = '200px'; // 設置ToDo List和Daily Tasks的maxHeight
+      this.ToDoListulmaxHeight = 'calc(74vh - 70px)';
+      this.DailyTaskulmaxHeight = 'calc(70vh - 77px)';
+      // this.ToDoListulmaxHeight = 'calc(70vh - 50px)';
+      // this.DailyTaskulmaxHeight = 'calc(65vh - 50px)';
+      // this.ToDoListulmaxHeight = null;
+      // this.DailyTaskulmaxHeight = null;
     },
     switchToFocusMode() {
       this.mode = 'focus';
-      this.maxHeight = '400px'; // 設置ToDo List的maxHeight
+      this.ToDoListulmaxHeight = 'calc(100vh - 228px)';
+      this.DailyTaskulmaxHeight = null;
     },
     handlePushSelectedTasks(selectedTasks) {
       this.selectedTasksFromDailyTask = selectedTasks;
@@ -89,7 +98,6 @@ export default {
 .navbar {
   background-color:aliceblue;
   padding: 5px;
-  border-bottom: 1px solid #ccc; 
 }
 
 .navbar button {
@@ -116,7 +124,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 50vw;
+  /* width: 50vw; */
 }
 
 .TaskInventory-container {
@@ -139,6 +147,7 @@ export default {
 
 .new-layout {
   display: flex;
+  height: 100%;
 }
 
 .DailyTask-full {

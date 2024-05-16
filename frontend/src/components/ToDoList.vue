@@ -6,7 +6,7 @@
         <input type="text" v-model="newTask" placeholder="Enter task...">
         <button @click="addTask">+</button>
       </div>
-      <ul class="tasks-list">
+      <ul class="tasks-list" :style="{ maxHeight: maxHeight }">
         <li v-for="task in tasks" :key="task.id" class="task-item">
           <div class="task-status">
             <div class="custom-checkbox" :class="{ 'custom-checkbox-checked': task.status }" @click="updateTaskStatus(task)"></div>
@@ -33,7 +33,16 @@
 import todoListApi from '../apis/todoListApi';
 
 export default {
-  props: ['selectedTasks'], // Receive selected tasks as props
+  props: {
+    selectedTasks: {
+      type: Array,
+      default: () => []
+    },
+    maxHeight: {
+      type: String,
+      default: null
+    }
+  },
   data() {
     return {
       tasks: [],
@@ -146,7 +155,7 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 98%;
   max-height: 98%;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   box-sizing: border-box;
 }
 
@@ -187,8 +196,8 @@ export default {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  max-height: calc(50vh - 210px);
-  /* max-height: calc(100vh - 240px);  */
+  max-height: calc(50vh - 205px);
+  /* max-height: calc(100vh - 228px); */
   overflow-y: auto;
 }
 
