@@ -15,6 +15,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 cors.init_app(app)
 
+with app.app_context():
+    db.create_all()
+
 @app.cli.command()
 def create():
     """
