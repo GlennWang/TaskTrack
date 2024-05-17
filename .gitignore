@@ -7,3 +7,6 @@ __pycache__/
 
 # Ignore tasktrack.db
 backend/app/database/tasktrack.db
+
+#
+**/dist/

@@ -71,13 +71,9 @@ export default {
     },
     switchToDailyMode() {
       this.mode = 'daily';
-      // this.ToDoListulmaxHeight = 'calc(74vh - 70px)';
-      // this.DailyTaskulmaxHeight = 'calc(70vh - 77px)';
       this.ToDoListulmaxHeight = 'calc(100vh - 228px)';
       this.ToDoListFocusWidth = '98%';
       this.DailyTaskulmaxHeight = 'calc(100vh - 269px)';
-      // this.ToDoListulmaxHeight = null;
-      // this.DailyTaskulmaxHeight = null;
       this.clearSelectedTasks();
     },
     switchToFocusMode() {
