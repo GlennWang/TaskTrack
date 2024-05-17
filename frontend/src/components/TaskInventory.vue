@@ -289,7 +289,7 @@ export default {
 .task-inventory-container {
   width: 50vw;
   /* height: 100vh; */
-  height: calc(100vh - 59px);
+  height: calc(100vh - 52px);
   overflow-y: auto;
 }
 

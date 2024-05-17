@@ -1,6 +1,6 @@
 <template>
   <div class="todo-list-wrapper">
-    <div class="todo-list">
+    <div class="todo-list" :style="{ width: focusWidth }">
       <h2>ToDo List</h2>
       <div class="add-task-container">
         <input type="text" v-model="newTask" placeholder="Enter task...">
@@ -39,6 +39,10 @@ export default {
       default: () => []
     },
     maxHeight: {
+      type: String,
+      default: null
+    },
+    focusWidth: {
       type: String,
       default: null
     }
@@ -154,7 +158,7 @@ export default {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 98%;
-  max-height: 98%;
+  max-height: 100%;
   /* overflow-y: auto; */
   box-sizing: border-box;
 }

@@ -16,7 +16,7 @@
           <DailyTask @tasks-selected="handlePushSelectedTasks" />
         </div>
         <div class="ToDoList-container">
-          <ToDoList :selected-tasks="selectedTasksFromDailyTask" :maxHeight="ToDoListulmaxHeight"/>
+          <ToDoList :selected-tasks="selectedTasksFromDailyTask" :maxHeight="ToDoListulmaxHeight" :focusWidth="ToDoListFocusWidth"/>
         </div>
       </div>
     </div>
@@ -27,7 +27,7 @@
         <DailyTask @tasks-selected="handlePushSelectedTasks" :maxHeight="DailyTaskulmaxHeight"/>
       </div>
       <div class="ToDoList-full">
-        <ToDoList :selected-tasks="selectedTasksFromDailyTask" :maxHeight="ToDoListulmaxHeight"/>
+        <ToDoList :selected-tasks="selectedTasksFromDailyTask" :maxHeight="ToDoListulmaxHeight" :focusWidth="ToDoListFocusWidth"/>
       </div>
     </div>
   </div>
@@ -50,6 +50,7 @@ export default {
       selectedTasksFromDailyTask: [],
       mode: 'comprehensive',
       ToDoListulmaxHeight: null,
+      ToDoListFocusWidth: '98%',
       DailyTaskulmaxHeight: null
     };
   },
@@ -57,29 +58,40 @@ export default {
     switchToComprehensiveMode() {
       this.mode = 'comprehensive';
       this.ToDoListulmaxHeight = null;
+      this.ToDoListFocusWidth = '98%';
       this.DailyTaskulmaxHeight = null;
+      this.clearSelectedTasks();
     },
     switchToCoreMode() {
       this.mode = 'core';
       this.ToDoListulmaxHeight = 'calc(100vh - 228px)';
+      this.ToDoListFocusWidth = '98%';
       this.DailyTaskulmaxHeight = null;
+      this.clearSelectedTasks();
     },
     switchToDailyMode() {
       this.mode = 'daily';
       // this.ToDoListulmaxHeight = 'calc(74vh - 70px)';
       // this.DailyTaskulmaxHeight = 'calc(70vh - 77px)';
       this.ToDoListulmaxHeight = 'calc(100vh - 228px)';
+      this.ToDoListFocusWidth = '98%';
       this.DailyTaskulmaxHeight = 'calc(100vh - 269px)';
       // this.ToDoListulmaxHeight = null;
       // this.DailyTaskulmaxHeight = null;
+      this.clearSelectedTasks();
     },
     switchToFocusMode() {
       this.mode = 'focus';
       this.ToDoListulmaxHeight = 'calc(100vh - 228px)';
+      this.ToDoListFocusWidth = '60vw';
       this.DailyTaskulmaxHeight = null;
+      this.clearSelectedTasks();
     },
     handlePushSelectedTasks(selectedTasks) {
       this.selectedTasksFromDailyTask = selectedTasks;
+    },
+    clearSelectedTasks() {
+      this.selectedTasksFromDailyTask = [];
     }
   }
 };
@@ -93,6 +105,7 @@ export default {
   /* height: 100%; */
   height: 100vh;
   width: 100vw;
+  background-color: #e0e0e0;
 }
 
 .navbar {
