@@ -40,6 +40,16 @@
 
 # Pyinstaller
 
-```
+1. Normal:
 
 ```
+PyInstaller -F --add-data="./vuedist;vuedist" --add-data="extensions.py;." app.py -n TaskTrack
+```
+
+2. noconsole:
+
+```
+PyInstaller -F --add-data="./vuedist;vuedist" --add-data="extensions.py;." app.py -n TaskTrack --noconsole
+```
+
+note：You need to exclude your project folder from Windows virus check
