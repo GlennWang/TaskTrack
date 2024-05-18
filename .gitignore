@@ -10,6 +10,3 @@ backend/app/database/tasktrack.db
 
 # dist
 **/dist/
-
-# vuedist
-**/vuedist/
