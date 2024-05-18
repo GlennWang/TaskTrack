@@ -10,3 +10,9 @@ backend/app/database/tasktrack.db
 
 # dist
 **/dist/
+
+# pyinstaller
+
+**/build/
+app.spec
+TaskTrack.spec
