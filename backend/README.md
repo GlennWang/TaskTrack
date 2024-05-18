@@ -43,13 +43,13 @@
 1. Normal:
 
 ```
-PyInstaller -F --add-data="./vuedist;vuedist" --add-data="extensions.py;." app.py -n TaskTrack
+PyInstaller --add-data="./vuedist;vuedist" --add-data="extensions.py;." -n TaskTrack -i ./vuedist/tasks.ico app.py --onefile
 ```
 
 2. noconsole:
 
 ```
-PyInstaller -F --add-data="./vuedist;vuedist" --add-data="extensions.py;." app.py -n TaskTrack --noconsole
+PyInstaller --add-data="./vuedist;vuedist" --add-data="extensions.py;." -n TaskTrack --noconsole -i ./vuedist/tasks.ico app.py --onefile
 ```
 
 note：You need to exclude your project folder from Windows virus check
