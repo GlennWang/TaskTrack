@@ -10,4 +10,4 @@ REM 使用 start 命令在背景中運行 Flask 應用程式
 start python app.py
 
 REM 打開網頁
-start http://127.0.0.1:5000/
+REM start http://127.0.0.1:5000/

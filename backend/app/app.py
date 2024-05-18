@@ -6,8 +6,8 @@ from views import task_inventory_view, daily_task_view, todo_list_view
 from models import TaskInventory, DailyTask, ToDoList
 
 app = Flask(__name__,
-            static_folder='./dist',
-            template_folder='./dist')
+            static_folder='./vuedist',
+            template_folder='./vuedist')
 
 # 設置資料庫連線
 db_path = os.path.join(os.getcwd(), 'database', 'tasktrack.db')
@@ -28,12 +28,12 @@ def index():
 @app.route('/assets/<path:path>')
 def serve_static(path):
     if path.endswith('.js'):
-        return send_from_directory('dist/assets', path, mimetype='application/javascript')
-    return send_from_directory('dist/assets', path)
+        return send_from_directory('vuedist/assets', path, mimetype='application/javascript')
+    return send_from_directory('vuedist/assets', path)
 
 @app.route('/tasks.svg')
 def favicon():
-    return send_from_directory('dist', 'tasks.svg', mimetype='image/svg+xml')
+    return send_from_directory('vuedist', 'tasks.svg', mimetype='image/svg+xml')
 
 @app.cli.command()
 def create():
