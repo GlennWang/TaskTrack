@@ -37,3 +37,9 @@
    ```
    python app.py
    ```
+
+# Pyinstaller
+
+```
+
+```
